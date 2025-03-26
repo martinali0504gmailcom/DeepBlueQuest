@@ -50,14 +50,17 @@ MonoBehaviour:
   airGravity: 9.81
   horizontalSpeed: 5
   verticalSpeed: 3
+  maxUnderwaterSpeed: 8
   surfaceLevel: 249
   neutralBuoyancyDepth: -30
   buoyancyForce: 1
   gravityForce: 1
-  depthIntervalSize: 25
+  depthIntervalSize: 50
   downwardForcePerInterval: 0.25
-  waterDrag: 0.05
-  roationSpeed: 100
+  waterDrag: 0.8
+  rotationSpeed: 25
+  minPitch: -60
+  maxPitch: 60
 --- !u!143 &4734957334715542040
 CharacterController:
   m_ObjectHideFlags: 0
