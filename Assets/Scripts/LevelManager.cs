@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement; //Needed for scene control
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("Data References")]
+    [Tooltip("Place the data (text for popup box) for the level here.")]
+    public LevelData levelData;
+
     [Header("References")]
     public Transform player;
     public Transform start;
@@ -33,8 +37,9 @@ public class LevelManager : MonoBehaviour
             player.position = start.position;
         }
 
+        HidePopup();
         //Clarify the objective quickly
-        ShowPopup("Get to the goal before your oxygen runs out!", 7f);
+        ShowPopup(levelData.initialText, levelData.initialTextDismissTime);
     }
 
     // Update is called once per frame
@@ -44,7 +49,7 @@ public class LevelManager : MonoBehaviour
             return; //Stop updating if the level is over:
 
         oxygenTime -= Time.deltaTime;
-        if (oxygenTime <= 0f)
+        if (!levelFailed && oxygenTime <= 0f)
         {
             oxygenTime = 0f;
             OnLevelFail();
@@ -64,23 +69,21 @@ public class LevelManager : MonoBehaviour
     {
         levelFailed = true;
         Debug.Log("Oxygen depleted! You have failed the level!");
-        ShowPopup("Oxygen depleted! You have failed the level!", 5f);
+        ShowPopup(levelData.failText, levelData.failTextDismissTime);
     }
 
     void OnLevelComplete()
     {
         levelComplete = true;
         Debug.Log("Level Complete! You reached the goal!");
-        ShowPopup("Level Complete! You reached the goal!");
+        ShowPopup(levelData.successText, levelData.successTextDismissTime);
     }
 
     //Corotine to hide popup after a specified time
     private IEnumerator HidePopupAfterSeconds(float duration)
     {
         yield return new WaitForSeconds(duration); //Wait the duration time before acting
-
-        if (popupPanel != null)
-            popupPanel.SetActive(false);
+        HidePopup();
     }
 
     //Method that shows the user a message on the popup!
@@ -96,7 +99,13 @@ public class LevelManager : MonoBehaviour
         else 
         Debug.Log("ERROR: Failed to display popup message!");//check for errors
 
+        StopAllCoroutines(); //cancels previous hide timers
         //Hide the popup after the specified time (or 3 seconds, if none was given)
         StartCoroutine(HidePopupAfterSeconds(popupTime));
+    }
+
+    void HidePopup()
+    {
+        if (popupPanel) popupPanel.SetActive(false);
     }
 }

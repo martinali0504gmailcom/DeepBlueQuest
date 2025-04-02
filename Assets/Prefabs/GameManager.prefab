@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 244093485400564935}
   - component: {fileID: 2112423649061030114}
+  - component: {fileID: 5033659288777365206}
+  - component: {fileID: 1152766798565257026}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,7 +49,41 @@ MonoBehaviour:
   player: {fileID: 0}
   start: {fileID: 0}
   goal: {fileID: 0}
+  popupPanel: {fileID: 0}
+  popupText: {fileID: 0}
   oxygenTime: 2700
   levelFailed: 0
   levelComplete: 0
   goalRadius: 2
+--- !u!114 &5033659288777365206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908945662198070046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8b0f304c6484e6b85e9624c6595a1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  underwaterVolume: {fileID: 1152766798565257026}
+  transitionSpeed: 1
+--- !u!114 &1152766798565257026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908945662198070046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 65c294c15f3924e64b7f8b463e786d51, type: 2}
