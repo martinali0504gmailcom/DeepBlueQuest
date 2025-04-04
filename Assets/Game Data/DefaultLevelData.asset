@@ -20,3 +20,23 @@ MonoBehaviour:
   failTextDismissTime: 10
   successText: You made it, level complete!
   successTextDismissTime: 10
+  clipperInfoText1: 
+  clipperInfoText2: 
+  clipperInfoTextDismissTime: 10
+  vaccumInfoText1: 
+  vaccumInfoText2: 
+  vaccumInfoTextDismissTime: 10
+  glueInfoText1: 
+  glueInfoText2: 
+  glueInfoTextDismissTime: 10
+  taskCompletionText1: Woo hoo, on to the next one!
+  taskCompletionText2: 
+  taskCompletionText3: 
+  taskCompletionText4: 
+  taskCompletionText5: 
+  taskCompletionText6: 
+  taskCompletionText7: 
+  taskCompletionText8: 
+  taskCompletionText9: 
+  taskCompletionText10: 
+  taskCompletionTextDismissTime: 5
