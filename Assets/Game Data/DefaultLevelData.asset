@@ -20,22 +20,37 @@ MonoBehaviour:
   failTextDismissTime: 10
   successText: You made it, level complete!
   successTextDismissTime: 10
-  clipperInfoText1: 
-  clipperInfoText2: 
+  clipperInfoText1: "Oh no! Some corals got sick from dirty water and too much heat.
+    Sneaky fungi and germs are hurting them! If we don\u2019t help, the sickness
+    could spread to their coral neighbors!"
+  clipperInfoText2: "Use the Coral Clippers to snip away the sick, mushy parts of
+    the coral. Be gentle\u2014only cut what looks fuzzy or brown. Toss the  pieces
+    in the special bin!"
   clipperInfoTextDismissTime: 10
-  vaccumInfoText1: 
-  vaccumInfoText2: 
+  vaccumInfoText1: "Trash and dirty stuff from land floated into the ocean. Chemicals,
+    plastic, and oil can hurt coral, make fish sick, and turn our beautiful reef
+    into a mess. Coral need clean water to grow\u2014just like flowers need clean
+    soil!"
+  vaccumInfoText2: "Point the vacuum at the messy spots and suck up the gunk! Look
+    out for baby fish\u2014don\u2019t slurp them up by mistake!"
   vaccumInfoTextDismissTime: 10
-  glueInfoText1: 
-  glueInfoText2: 
+  glueInfoText1: " The coral looks pale like a ghost! When ocean water gets too hot,
+    coral gets stressed and kicks out the tiny helpful algae that give them food
+    and color. That\u2019s called bleaching. Without their algae buddies, coral get
+    hungry and weak... and might not survive.\n\nBroken coral pieces are like little
+    plant cuttings\u2014they can grow again if we give them a good home! This helps
+    rebuild the reef and bring fishy friends back!"
+  glueInfoText2: "Pick a clean, sunny spot on the rock. Use the coral glue (it\u2019s
+    ocean-safe!) to stick the baby coral piece down. Hold it for 3...2...1...done!"
   glueInfoTextDismissTime: 10
   taskCompletionText1: Woo hoo, on to the next one!
-  taskCompletionText2: 
-  taskCompletionText3: 
-  taskCompletionText4: 
-  taskCompletionText5: 
-  taskCompletionText6: 
-  taskCompletionText7: 
+  taskCompletionText2: Hooray! The reef is smiling again thanks to you.
+  taskCompletionText3: Mission cleaned and cleared. The ocean critters say thank
+    you.
+  taskCompletionText4: "You did it. That coral\u2019s got its groove and color back."
+  taskCompletionText5: "Fish are moving back in\u2014reef life is coming alive."
+  taskCompletionText6: "Coral comeback in progress\u2014Captain Eco, you're amazing."
+  taskCompletionText7: "Pollution defeated. Coral protected. Hero, that\u2019s you."
   taskCompletionText8: 
   taskCompletionText9: 
   taskCompletionText10: 
