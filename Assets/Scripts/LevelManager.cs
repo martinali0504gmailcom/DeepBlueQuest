@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("References")]
     public Transform player;
+    [Tooltip("To change where the player starts to face, change the X-Valye of Start's rotation.")]
     public Transform start;
     public Transform goal;
 
@@ -35,6 +36,7 @@ public class LevelManager : MonoBehaviour
         if (player != null && start != null)
         {
             player.position = start.position;
+            player.rotation = start.rotation; //To rotate, change the X-value of the start's rotation.
         }
 
         HidePopup();
