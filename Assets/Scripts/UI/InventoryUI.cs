@@ -8,6 +8,7 @@ public class InventoryUI : MonoBehaviour
     public static InventoryUI Instance;
     public GameObject inventoryPanel;
     private PlayerControls controls;
+    public PlayerMovementScript playerMovementScript;
     
     bool isPanelOpen = false;
 
@@ -45,19 +46,11 @@ public class InventoryUI : MonoBehaviour
     public void ToggleInventory()
     {
         isPanelOpen = !isPanelOpen;
-        if (inventoryPanel)
-        {
-            inventoryPanel.SetActive(isPanelOpen);
-        }
+        inventoryPanel.SetActive(isPanelOpen);
 
-        if(isPanelOpen)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
+        Cursor.lockState = isPanelOpen ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = isPanelOpen;
 
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        playerMovementScript.SetCameraLock(isPanelOpen); // Lock or unlock the camera based on inventory state
     }
 }

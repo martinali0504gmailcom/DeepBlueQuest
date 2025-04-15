@@ -7,6 +7,9 @@ public class ToolButton : MonoBehaviour
     [Tooltip("The toolTypes are listed in, and can be found in 'ToolType.cs'")]
     public ToolType toolType;
     public PlayerInventory inventory;
+
+    public NotificationUI notificationSystem;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,5 +26,21 @@ public class ToolButton : MonoBehaviour
         //Equipped the specified tool
         inventory.EquipTool(toolType);
         Debug.Log("Equipped: " + toolType);
+
+        if (notificationSystem != null)
+        {
+            if (toolType == ToolType.None)
+            {
+                notificationSystem.ShowMessage("Unequipped tool.");
+            }
+            else
+            {
+                notificationSystem.ShowMessage("Equipped: " + toolType);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Notification system is not assigned!");
+        }
     }
 }

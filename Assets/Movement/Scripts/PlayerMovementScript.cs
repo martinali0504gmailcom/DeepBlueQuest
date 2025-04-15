@@ -57,6 +57,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private Transform camTransform;    // We'll rotate only for pitch
     private float cameraPitch;         // Tracks current pitch angle
+    private bool cameraLocked;        // Whether the camera is locked in position
 
     private Vector2 moveInput;         // (x = strafe, y = forward/back)
     private Vector2 lookInput;         // (x = yaw, y = pitch)
@@ -93,14 +94,24 @@ public class PlayerMovementScript : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         camTransform = Camera.main.transform;
+        cameraLocked = false; // Start with camera unlocked
         // Optionally lock the cursor for an FPS feel:
         // Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        HandleRotation();
+        if (!cameraLocked)
+        {
+            // Rotate the camera only if not locked
+            HandleRotation();
+        }
         HandleMovement();
+    }
+
+    public void SetCameraLock(bool isLocked)
+    {
+        cameraLocked = isLocked;
     }
 
     /// <summary>

@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2329209c9dc1f4e5fb340271c7f272b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredTool: 0
+  notificationSystem: {fileID: 4108540171154074456, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+  requiredTool: 1
   requiresHold: 0
   timeToHold: 0
   hasBeenSnipped: 0
