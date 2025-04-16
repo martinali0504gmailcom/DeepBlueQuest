@@ -76,9 +76,32 @@ public class LevelManager : MonoBehaviour
 
     void OnLevelComplete()
     {
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        if (!IsTutorialLevel(buildIndex))
+        {
+            int highest = SaveManager.currentData.highestUnlockedLevel;
+            if (buildIndex >= highest)
+            {
+                SaveManager.currentData.highestUnlockedLevel = buildIndex + 1;
+                SaveManager.SaveGame();
+            }
+        }
+
         levelComplete = true;
         Debug.Log("Level Complete! You reached the goal!");
         ShowPopup(levelData.successText, levelData.successTextDismissTime);
+
+        SceneManager.LoadScene(0);
+    }
+
+    bool IsTutorialLevel(int index)
+    {
+        var config = Resources.Load<LevelsConfig>("LevelsConfig");
+        foreach (int t in config.tutorialLevels)
+        {
+            if (t == index) return true;
+        }
+        return false;
     }
 
     //Corotine to hide popup after a specified time
