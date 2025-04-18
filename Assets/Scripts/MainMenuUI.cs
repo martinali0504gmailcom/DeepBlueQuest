@@ -23,6 +23,9 @@ public class MainMenuUI : MonoBehaviour
         SaveManager.LoadGame();
         BuildTutorialList();
         BuildMainList();
+
+        Cursor.lockState = CursorLockMode.None; //Unlock the cursor
+        Cursor.visible = true; //Make the cursor visible
     }
 
     void BuildTutorialList()

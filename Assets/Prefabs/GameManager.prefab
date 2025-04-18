@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 0}
+  levelsConfig: {fileID: 11400000, guid: 5d41000caf8324ba38bf1ae2a779e86a, type: 2}
   player: {fileID: 0}
   start: {fileID: 0}
   goal: {fileID: 0}

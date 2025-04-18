@@ -12,14 +12,16 @@ public class CoralClipping : InteractableBase
     {
         base.Interact(inventory);
 
-        if (hasBeenSnipped)
-        {
-            return;
-        }
-
         if (!inventory.HasToolEquipped(ToolType.CoralClippers))
         {
             notificationSystem?.ShowMessage("Need Clippers!", 2f);
+            return;
+        }
+
+        
+        if (hasBeenSnipped)
+        {
+            notificationSystem?.ShowMessage("Coral already snipped!", 2f);
             return;
         }
 

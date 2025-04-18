@@ -97,6 +97,9 @@ public class PlayerMovementScript : MonoBehaviour
         cameraLocked = false; // Start with camera unlocked
         // Optionally lock the cursor for an FPS feel:
         // Cursor.lockState = CursorLockMode.Locked;
+
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        Cursor.visible = false; // Hide the cursor
     }
 
     void Update()

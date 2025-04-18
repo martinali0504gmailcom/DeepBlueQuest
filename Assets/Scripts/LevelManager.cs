@@ -8,12 +8,14 @@ public class LevelManager : MonoBehaviour
     [Header("Data References")]
     [Tooltip("Place the data (text for popup box) for the level here.")]
     public LevelData levelData;
+    public LevelsConfig levelsConfig; //Reference to the levels config file
 
     [Header("References")]
     public Transform player;
     [Tooltip("To change where the player starts to face, change the X-Valye of Start's rotation.")]
     public Transform start;
     public Transform goal;
+    public PlayerMovementScript playerMovementScript; //Reference to the player movement script
 
     [Tooltip("UI Panel that pops up.")]
     public GameObject popupPanel;
@@ -28,6 +30,7 @@ public class LevelManager : MonoBehaviour
     public bool levelFailed = false;
     public bool levelComplete = false;
     public float goalRadius = 2f; //Distance we consider the player has reached the goal
+    public float menuReturnDelay = 4f; //Time to wait before returning to the menu
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +45,8 @@ public class LevelManager : MonoBehaviour
         HidePopup();
         //Clarify the objective quickly
         ShowPopup(levelData.initialText, levelData.initialTextDismissTime);
+
+        SaveManager.LoadGame(); //Load the game data
     }
 
     // Update is called once per frame
@@ -50,7 +55,12 @@ public class LevelManager : MonoBehaviour
         if (levelFailed || levelComplete)
             return; //Stop updating if the level is over:
 
-        oxygenTime -= Time.deltaTime;
+        //only lose oxygen while the player is below the water
+        if (player != null && player.position.y < playerMovementScript.surfaceLevel)
+        {
+            oxygenTime -= Time.deltaTime; //Deplete oxygen over time
+        }
+
         if (!levelFailed && oxygenTime <= 0f)
         {
             oxygenTime = 0f;
@@ -72,6 +82,8 @@ public class LevelManager : MonoBehaviour
         levelFailed = true;
         Debug.Log("Oxygen depleted! You have failed the level!");
         ShowPopup(levelData.failText, levelData.failTextDismissTime);
+
+        StartCoroutine(ReturnToMenuAfterDelay());
     }
 
     public void OnLevelComplete()
@@ -91,13 +103,26 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Level Complete! You reached the goal!");
         ShowPopup(levelData.successText, levelData.successTextDismissTime);
 
-        SceneManager.LoadScene(0);
+        StartCoroutine(ReturnToMenuAfterDelay());
+    }
+
+    IEnumerator ReturnToMenuAfterDelay()
+    {
+        yield return new WaitForSeconds(menuReturnDelay); //Wait the specified time before acting
+        Cursor.lockState = CursorLockMode.None; //Unlock the cursor
+        Cursor.visible = true; //Make the cursor visible
+
+        SceneManager.LoadScene(0); //Load the main menu scene
     }
 
     bool IsTutorialLevel(int index)
     {
-        var config = Resources.Load<LevelsConfig>("LevelsConfig");
-        foreach (int t in config.tutorialLevels)
+        if (levelsConfig == null || levelsConfig.tutorialLevels == null)
+        {
+            Debug.LogError("LevelsConfig or tutorialLevels is not set up correctly.");
+            return false;
+        }
+        foreach (int t in levelsConfig.tutorialLevels)
         {
             if (t == index) return true;
         }
@@ -124,7 +149,7 @@ public class LevelManager : MonoBehaviour
         else 
         Debug.Log("ERROR: Failed to display popup message!");//check for errors
 
-        StopAllCoroutines(); //cancels previous hide timers
+        // StopAllCoroutines(); //cancels previous hide timers
         //Hide the popup after the specified time (or 3 seconds, if none was given)
         StartCoroutine(HidePopupAfterSeconds(popupTime));
     }
