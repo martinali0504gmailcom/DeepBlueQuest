@@ -7,11 +7,6 @@ public class NotificationUI : MonoBehaviour
     [Header("References")]
     [Tooltip("The TMP text that will display messages")]
     public TextMeshProUGUI notificationText;
-
-    [Header("Settings")]
-    [Tooltip("How many seconds to show each message?")]
-    public float displayDuration = 3f;
-
     // We'll store a reference to any running coroutine
     private Coroutine hideCoroutine;
 
@@ -25,7 +20,7 @@ public class NotificationUI : MonoBehaviour
     /// <summary>
     /// Show a message for 'displayDuration' seconds, then hide automatically.
     /// </summary>
-    public void ShowMessage(string message)
+    public void ShowMessage(string message, float durationToShow = 3f)
     {
         if (!notificationText) return;
 
@@ -36,7 +31,7 @@ public class NotificationUI : MonoBehaviour
         if (hideCoroutine != null)
             StopCoroutine(hideCoroutine);
 
-        hideCoroutine = StartCoroutine(HideAfterSeconds(displayDuration));
+        hideCoroutine = StartCoroutine(HideAfterSeconds(durationToShow));
     }
 
     private IEnumerator HideAfterSeconds(float seconds)

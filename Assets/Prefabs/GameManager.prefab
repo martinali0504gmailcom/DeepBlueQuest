@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 244093485400564935}
   - component: {fileID: 2112423649061030114}
   - component: {fileID: 5033659288777365206}
+  - component: {fileID: 2693397104949509155}
   - component: {fileID: 1152766798565257026}
   - component: {fileID: 8763649223885204348}
   - component: {fileID: 995703168419508562}
@@ -73,6 +74,21 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   underwaterVolume: {fileID: 1152766798565257026}
   transitionSpeed: 1
+--- !u!114 &2693397104949509155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908945662198070046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff51f61bab622b48b5a77059a0491b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelManager: {fileID: 2112423649061030114}
+  corals: []
+  rocks: []
 --- !u!114 &1152766798565257026
 MonoBehaviour:
   m_ObjectHideFlags: 0

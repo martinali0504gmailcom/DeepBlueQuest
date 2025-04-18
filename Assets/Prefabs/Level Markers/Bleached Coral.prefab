@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7836387575737360786}
   - component: {fileID: 1334999471359005666}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Main Coral Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   requiredTool: 1
   requiresHold: 0
   timeToHold: 0
+  coralMesh: {fileID: 1145399964321796475}
   hasBeenSnipped: 0
 --- !u!1 &6679687796869227902
 GameObject:
@@ -156,5 +157,73 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6703033412492126596}
+  - {fileID: 8337764503718056322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &5467722884176155186
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9102668314943701864}
+    m_Modifications:
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.941
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.693
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901050869903868745, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+      propertyPath: m_Name
+      value: TIny Coral Fragment
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+--- !u!1 &1145399964321796475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4901050869903868745, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+  m_PrefabInstance: {fileID: 5467722884176155186}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8337764503718056322 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4059133435541832624, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+  m_PrefabInstance: {fileID: 5467722884176155186}
+  m_PrefabAsset: {fileID: 0}

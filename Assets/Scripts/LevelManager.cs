@@ -67,14 +67,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void OnLevelFail()
+    public void OnLevelFail()
     {
         levelFailed = true;
         Debug.Log("Oxygen depleted! You have failed the level!");
         ShowPopup(levelData.failText, levelData.failTextDismissTime);
     }
 
-    void OnLevelComplete()
+    public void OnLevelComplete()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         if (!IsTutorialLevel(buildIndex))
