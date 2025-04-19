@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: DefaultLevelData
   m_EditorClassIdentifier: 
   levelName: 
-  initialText: Get to the goal, idenfitied as a red sphere, before your oxygen tank
-    runs out! You have enough oxygen to stay underwater for 45 minutes.
-  initialTextDismissTime: 7
+  initialText: Look around and snip pieces of dead coral, then glue them to rocks!
+    Do this three times! Move with WASD or the Arrow Keys! Look with the mouse! Use
+    Space/Right Ctrl to go up and Shift to go down! Use Q or / to interact with the
+    objectives! Open your inventory of tools with E! You have enough oxygen to stay
+    underwater for 45 minutes! Good Luck!
+  initialTextDismissTime: 20
   failText: You ran out of oxygen... level failed...
   failTextDismissTime: 10
-  successText: You made it, level complete!
+  successText: You did it, level complete!
   successTextDismissTime: 10
   clipperInfoText1: "Oh no! Some corals got sick from dirty water and too much heat.
     Sneaky fungi and germs are hurting them! If we don\u2019t help, the sickness
