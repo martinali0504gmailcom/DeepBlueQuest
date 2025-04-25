@@ -1,5 +1,12 @@
 using UnityEngine;
 
+[System.Serializable]
+public class RangeString
+{
+    [Tooltip("E.g., 1-4, 6, 8-10")]
+    public string range = "1-10";
+}
+
 [CreateAssetMenu(fileName = "LevelData", menuName = "DeepBlueQuest/Level Data", order = 1)]
 public class LevelData : ScriptableObject
 {
@@ -62,4 +69,21 @@ public class LevelData : ScriptableObject
     [TextArea]
     public string taskCompletionText10;
     public float taskCompletionTextDismissTime = 5f;
+
+    public (string, float) GetToolLines(ToolType tool, int stage)
+    {
+        switch (tool)
+        {
+            case ToolType.CoralClippers:
+                return stage == 0
+                    ? (clipperInfoText1, clipperInfoTextDismissTime)
+                    : (clipperInfoText2, clipperInfoTextDismissTime);
+
+            case ToolType.CoralGlue:
+                return stage == 0
+                    ? (glueInfoText1, glueInfoTextDismissTime)
+                    : (glueInfoText2, glueInfoTextDismissTime);
+        }
+        return ("", 4f);
+    }
 }

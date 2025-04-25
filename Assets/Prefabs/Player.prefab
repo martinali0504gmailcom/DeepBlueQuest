@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8807275055360550474}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTool: 0
+  coralSamples: 0
 --- !u!114 &8807275055360550474
 MonoBehaviour:
   m_ObjectHideFlags: 0
