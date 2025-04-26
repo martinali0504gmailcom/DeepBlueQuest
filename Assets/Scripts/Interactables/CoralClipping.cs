@@ -14,14 +14,14 @@ public class CoralClipping : InteractableBase
 
         if (!inventory.HasToolEquipped(ToolType.CoralClippers))
         {
-            notificationSystem?.ShowMessage("Need Clippers!", 2f);
+            SpeechBubbleUI.Instance.Show("You need Clippers!", 2f);
             return;
         }
 
         
         if (hasBeenSnipped)
         {
-            notificationSystem?.ShowMessage("Coral already snipped!", 2f);
+            SpeechBubbleUI.Instance.Show("This Coral is already snipped!", 2f);
             return;
         }
 

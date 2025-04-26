@@ -86,4 +86,22 @@ public class LevelData : ScriptableObject
         }
         return ("", 4f);
     }
+
+    public string GetRandomCompletionLine(System.Collections.Generic.List<int> allowed)
+    {
+        string[] pool = {
+            taskCompletionText1, taskCompletionText2, taskCompletionText3,
+            taskCompletionText4, taskCompletionText5, taskCompletionText6,
+            taskCompletionText7, taskCompletionText8, taskCompletionText9,
+            taskCompletionText10
+        };
+
+        var valid = new System.Collections.Generic.List<string>();
+        foreach (int idx in allowed)
+            if (idx >= 1 && idx <= pool.Length && !string.IsNullOrWhiteSpace(pool[idx-1]))
+                valid.Add(pool[idx-1]);
+
+        if (valid.Count == 0) return "";
+        return valid[Random.Range(0, valid.Count)];
+    }
 }

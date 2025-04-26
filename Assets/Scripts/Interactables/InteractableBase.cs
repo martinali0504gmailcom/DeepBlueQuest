@@ -19,7 +19,7 @@ public class InteractableBase : MonoBehaviour
             Debug.Log("You do not have the proper tool equipped.");
             if (notificationSystem != null)
             {
-                notificationSystem.ShowMessage("You do not have the proper tool equipped.");
+                notificationSystem.ShowMessage("Wrong tool equipped.");
             }
             else
             {
@@ -29,7 +29,7 @@ public class InteractableBase : MonoBehaviour
         }
         if (notificationSystem != null)
         {
-            notificationSystem.ShowMessage("Interacted with " + gameObject.name + " using " + requiredTool + ".");
+            // notificationSystem.ShowMessage("Interacted with " + gameObject.name + " using " + requiredTool + ".");
         }
         else
         {

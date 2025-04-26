@@ -18,7 +18,7 @@ MonoBehaviour:
     Space/Right Ctrl to go up and Shift to go down! Use Q or / to interact with the
     objectives! Open your inventory of tools with E! You have enough oxygen to stay
     underwater for 45 minutes! Good Luck!
-  initialTextDismissTime: 20
+  initialTextDismissTime: 15
   failText: You ran out of oxygen... level failed...
   failTextDismissTime: 10
   successText: You did it, level complete!

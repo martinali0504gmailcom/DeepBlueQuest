@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5337609331619547495}
   - component: {fileID: 7836387575737360786}
   - component: {fileID: 1334999471359005666}
+  - component: {fileID: 6793796705105947225}
   m_Layer: 0
   m_Name: Main Coral Body
   m_TagString: Untagged
@@ -127,6 +128,23 @@ MonoBehaviour:
   timeToHold: 0
   coralMesh: {fileID: 1145399964321796475}
   hasBeenSnipped: 0
+--- !u!114 &6793796705105947225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632277218235924076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22573c72d69ac147bdd85f3026206f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerType: 0
+  triggerRadius: 5
+  levelData: {fileID: 11400000, guid: cca7e2dcc5b3d4ea29e0bd619209f0f7, type: 2}
+  portraitIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  playerInv: {fileID: 0}
 --- !u!1 &6679687796869227902
 GameObject:
   m_ObjectHideFlags: 0
