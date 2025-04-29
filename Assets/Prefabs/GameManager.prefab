@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1152766798565257026}
   - component: {fileID: 8763649223885204348}
   - component: {fileID: 995703168419508562}
+  - component: {fileID: 4274487917234610291}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -54,12 +55,14 @@ MonoBehaviour:
   player: {fileID: 0}
   start: {fileID: 0}
   goal: {fileID: 0}
+  playerMovementScript: {fileID: 0}
   popupPanel: {fileID: 0}
   popupText: {fileID: 0}
   oxygenTime: 2700
   levelFailed: 0
   levelComplete: 0
   goalRadius: 2
+  menuReturnDelay: 4
 --- !u!114 &5033659288777365206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,3 +156,22 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!114 &4274487917234610291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908945662198070046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b247b9b25a55d4d4c88774558db38faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceY: 0
+  gameCam: {fileID: 0}
+  waterFogColor: {r: 0.11, g: 0.35, b: 0.55, a: 1}
+  baseDensity: 0.02
+  extraDensityPerMeter: 0.0003
+  farClip: 600
+  playerMovementScript: {fileID: 0}

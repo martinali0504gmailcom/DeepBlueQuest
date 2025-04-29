@@ -1,65 +1,68 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.SceneManagement; //Needed for scene control
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     [Header("Data References")]
-    [Tooltip("Place the data (text for popup box) for the level here.")]
     public LevelData levelData;
-    public LevelsConfig levelsConfig; //Reference to the levels config file
+    public LevelsConfig levelsConfig;
 
     [Header("References")]
     public Transform player;
-    [Tooltip("To change where the player starts to face, change the X-Valye of Start's rotation.")]
     public Transform start;
     public Transform goal;
-    public PlayerMovementScript playerMovementScript; //Reference to the player movement script
+    public PlayerMovementScript playerMovementScript;
 
-    [Tooltip("UI Panel that pops up.")]
     public GameObject popupPanel;
-    [Tooltip("TMP text that displays messages in the popup.")]
     public TextMeshProUGUI popupText;
 
     [Header("Oxygen Settings")]
-    [Tooltip("Time till oxygen depletes: Recall that 60 seconds = 1 minute, so 2700 sec = 45 mins")]
-    public float oxygenTime = 2700f; // Unity counts in seconds; 60f = 1 min -> 2700 seconds = 45 min
+    public float oxygenTime = 2700f;
 
     [Header("Game Settings")]
     public bool levelFailed = false;
     public bool levelComplete = false;
-    public float goalRadius = 2f; //Distance we consider the player has reached the goal
-    public float menuReturnDelay = 4f; //Time to wait before returning to the menu
+    public float goalRadius = 2f;
+    public float menuReturnDelay = 4f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // ---------- new fields ----------
+    PlayerControls controls;
+    Coroutine popupRoutine;          // keep handle so we can stop it
+    // --------------------------------
+
     void Start()
     {
-        //Spawn player at "start" location
-        if (player != null && start != null)
+        if (controls == null)
+        {
+            controls = new PlayerControls();
+            controls.Player.Enable();
+        }
+
+        if (player && start)
         {
             player.position = start.position;
-            player.rotation = start.rotation; //To rotate, change the X-value of the start's rotation.
+            player.rotation = start.rotation;
         }
 
         HidePopup();
-        //Clarify the objective quickly
         ShowPopup(levelData.initialText, levelData.initialTextDismissTime);
 
-        SaveManager.LoadGame(); //Load the game data
+        SaveManager.LoadGame();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (levelFailed || levelComplete)
-            return; //Stop updating if the level is over:
+        // ------- close popup early on Interact ----------
+        if (popupPanel.activeSelf && controls.Player.Interact.WasPressedThisFrame())
+            HidePopup();
+        // -------------------------------------------------
 
-        //only lose oxygen while the player is below the water
-        if (player != null && player.position.y < playerMovementScript.surfaceLevel)
-        {
-            oxygenTime -= Time.deltaTime; //Deplete oxygen over time
-        }
+        if (levelFailed || levelComplete) return;
+
+        if (player && player.position.y < playerMovementScript.surfaceLevel)
+            oxygenTime -= Time.deltaTime;
 
         if (!levelFailed && oxygenTime <= 0f)
         {
@@ -67,22 +70,17 @@ public class LevelManager : MonoBehaviour
             OnLevelFail();
         }
 
-        if (player != null && goal != null)
+        if (player && goal &&
+            Vector3.Distance(player.position, goal.position) <= goalRadius)
         {
-            float distanceToGoal = Vector3.Distance(player.position, goal.position);
-            if (distanceToGoal <= goalRadius)
-            {
-                OnLevelComplete();
-            }
+            OnLevelComplete();
         }
     }
 
     public void OnLevelFail()
     {
         levelFailed = true;
-        Debug.Log("Oxygen depleted! You have failed the level!");
         ShowPopup(levelData.failText, levelData.failTextDismissTime);
-
         StartCoroutine(ReturnToMenuAfterDelay());
     }
 
@@ -100,62 +98,46 @@ public class LevelManager : MonoBehaviour
         }
 
         levelComplete = true;
-        Debug.Log("Level Complete! You reached the goal!");
         ShowPopup(levelData.successText, levelData.successTextDismissTime);
-
         StartCoroutine(ReturnToMenuAfterDelay());
     }
 
     IEnumerator ReturnToMenuAfterDelay()
     {
-        yield return new WaitForSeconds(menuReturnDelay); //Wait the specified time before acting
-        Cursor.lockState = CursorLockMode.None; //Unlock the cursor
-        Cursor.visible = true; //Make the cursor visible
-
-        SceneManager.LoadScene(0); //Load the main menu scene
+        yield return new WaitForSeconds(menuReturnDelay);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible   = true;
+        SceneManager.LoadScene(0);
     }
 
-    bool IsTutorialLevel(int index)
+    bool IsTutorialLevel(int idx)
     {
-        if (levelsConfig == null || levelsConfig.tutorialLevels == null)
-        {
-            Debug.LogError("LevelsConfig or tutorialLevels is not set up correctly.");
-            return false;
-        }
+        if (levelsConfig == null) return false;
         foreach (int t in levelsConfig.tutorialLevels)
-        {
-            if (t == index) return true;
-        }
+            if (t == idx) return true;
         return false;
     }
 
-    //Corotine to hide popup after a specified time
-    private IEnumerator HidePopupAfterSeconds(float duration)
+    // ---------------- popup helpers ----------------
+    IEnumerator HidePopupAfterSeconds(float dur)
     {
-        yield return new WaitForSeconds(duration); //Wait the duration time before acting
+        yield return new WaitForSeconds(dur);
         HidePopup();
     }
 
-    //Method that shows the user a message on the popup!
-    //Put in the string of the mesaage to be shown to the player
-    //(Optional), then, put in the time the popup is to be displayed.
-    void ShowPopup(string message, float popupTime = 3f)
+    void ShowPopup(string msg, float dur = 3f)
     {
-        if (popupPanel != null)
-            popupPanel.SetActive(true);
+        if (popupPanel) popupPanel.SetActive(true);
+        if (popupText)  popupText.text = msg;
 
-        if (popupText != null)
-            popupText.text = message;
-        else 
-        Debug.Log("ERROR: Failed to display popup message!");//check for errors
-
-        // StopAllCoroutines(); //cancels previous hide timers
-        //Hide the popup after the specified time (or 3 seconds, if none was given)
-        StartCoroutine(HidePopupAfterSeconds(popupTime));
+        if (popupRoutine != null) StopCoroutine(popupRoutine);
+        popupRoutine = StartCoroutine(HidePopupAfterSeconds(dur));
     }
 
     void HidePopup()
     {
+        if (popupRoutine != null) StopCoroutine(popupRoutine);
+        popupRoutine = null;
         if (popupPanel) popupPanel.SetActive(false);
     }
 }

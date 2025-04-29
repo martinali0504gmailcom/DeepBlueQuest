@@ -2,43 +2,45 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 
-/// <summary>
-/// Slides a single speech-bubble on / off screen. Portrait sprite is set
-/// once in the prefab and reused for every call.
-/// </summary>
 public class SpeechBubbleUI : MonoBehaviour
 {
     public static SpeechBubbleUI Instance;
 
     [Header("Refs")]
-    public RectTransform root;         // SpeechBubble RectTransform
-    public CanvasGroup    cg;          // for fade
-    public TextMeshProUGUI body;       // TMP text field
+    public RectTransform root;
+    public CanvasGroup   cg;
+    public TextMeshProUGUI body;
 
     [Header("Animation")]
-    public float slideTime = 0.35f;    // seconds
-    public float defaultDuration = 5f; // auto-hide delay
+    public float slideTime = 0.35f;
+    public float defaultDuration = 5f;
 
-    Vector2 hiddenPos;  // off-screen
-    Vector2 shownPos;   // on-screen
+    Vector2 hiddenPos;     // off-screen (right)
+    Vector2 shownPos;      // prefab position
     Coroutine routine;
+
+    PlayerControls controls;
 
     void Awake()
     {
         Instance = this;
 
-        shownPos  = root.anchoredPosition;          // prefab’s position
-        hiddenPos = shownPos + new Vector2(-800, 0); // slide in from left
+        shownPos  = root.anchoredPosition;          // where you placed it
+        hiddenPos = shownPos + new Vector2(+800, 0); // <-- slide in from RIGHT
         root.anchoredPosition = hiddenPos;
         cg.alpha = 0f;
+
+        controls = new PlayerControls();
+        controls.Player.Enable();
     }
 
-    /// <summary>Display text for given seconds (or defaultDuration).</summary>
-    public void Show(string message, float duration = -1f)
+    void OnDestroy() => controls.Disable();
+
+    public void Show(string msg, float dur = -1f)
     {
-        if (duration <= 0f) duration = defaultDuration;
+        if (dur <= 0f) dur = defaultDuration;
         if (routine != null) StopCoroutine(routine);
-        routine = StartCoroutine(Run(message, duration));
+        routine = StartCoroutine(Run(msg, dur));
     }
 
     IEnumerator Run(string msg, float seconds)
@@ -55,8 +57,14 @@ public class SpeechBubbleUI : MonoBehaviour
         }
         root.anchoredPosition = shownPos; cg.alpha = 1f;
 
-        // wait
-        yield return new WaitForSecondsRealtime(seconds);
+        float elapsed = 0f;
+        while (elapsed < seconds)
+        {
+            // skip if player presses Interact
+            if (controls.Player.Interact.WasPressedThisFrame()) break;
+            elapsed += Time.unscaledDeltaTime;
+            yield return null;
+        }
 
         // slide-out
         for (float t = 0; t < slideTime; t += Time.unscaledDeltaTime)
