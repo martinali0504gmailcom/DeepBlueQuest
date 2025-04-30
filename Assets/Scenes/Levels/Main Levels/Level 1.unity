@@ -306,6 +306,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1886150769}
     - target: {fileID: 4274487917234610291, guid: dc0d61462e6b3477995c96504b075465, type: 3}
+      propertyPath: waterFogColor.b
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274487917234610291, guid: dc0d61462e6b3477995c96504b075465, type: 3}
+      propertyPath: waterFogColor.g
+      value: 0.50138927
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274487917234610291, guid: dc0d61462e6b3477995c96504b075465, type: 3}
+      propertyPath: waterFogColor.r
+      value: 0.035243843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274487917234610291, guid: dc0d61462e6b3477995c96504b075465, type: 3}
       propertyPath: playerMovementScript
       value: 
       objectReference: {fileID: 1886150768}
