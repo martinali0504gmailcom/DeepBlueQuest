@@ -18,7 +18,11 @@ MonoBehaviour:
     Space/Right Ctrl to go up and Shift to go down! Use Q or / to interact with the
     objectives! Open your inventory of tools with E! You have enough oxygen to stay
     underwater for 45 minutes! Good Luck!
-  initialTextDismissTime: 15
+  initialMessages:
+  - Hey Im a test!
+  - Oh look, it's working!
+  - Yippie!
+  initialTextDismissTime: 3
   failText: "You had a great dive! Out of oxygen now, but learning takes time. Let\u2019s
     go again when you\u2019re ready."
   failTextDismissTime: 10

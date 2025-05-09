@@ -27,10 +27,9 @@ public class LevelManager : MonoBehaviour
     public float goalRadius = 2f;
     public float menuReturnDelay = 4f;
 
-    // ---------- new fields ----------
     PlayerControls controls;
     Coroutine popupRoutine;          // keep handle so we can stop it
-    // --------------------------------
+    Coroutine introRoutine;
 
     void Start()
     {
@@ -47,7 +46,11 @@ public class LevelManager : MonoBehaviour
         }
 
         HidePopup();
-        ShowPopup(levelData.initialText, levelData.initialTextDismissTime);
+
+        string[] intro = (levelData.initialMessages != null && levelData.initialMessages.Length > 0)
+            ? levelData.initialMessages : new string[] {levelData.initialText};
+
+        introRoutine = StartCoroutine(ShowStringOfMessages(levelData.initialTextDismissTime, intro));
 
         SaveManager.LoadGame();
     }
@@ -123,6 +126,38 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(dur);
         HidePopup();
+    }
+
+    //Show a series of messages instead of just one - TO FIX: Player hits the key and the whole text disappears
+    IEnumerator ShowStringOfMessages(float dur, string[] msgs)
+    {
+        if(msgs == null || msgs.Length == 0) yield break;
+
+        popupPanel.SetActive(true);
+
+        foreach (string line in msgs)
+        {
+            popupText.text = line;
+
+            float t = 0f;
+            bool next = false;
+
+            //Make sure the text isn't skipped multiple times
+            yield return new WaitUntil(() => !controls.Player.Interact.IsPressed());
+
+            while (!next)
+            {
+                t += Time.deltaTime;
+                if (t >= dur)
+                    next = true;
+                if (controls.Player.Interact.WasPressedThisFrame())
+                    next = true;      //Use interact to skip to next line
+
+                yield return null;
+            }
+        }
+        popupPanel.SetActive(false);
+        introRoutine = null;
     }
 
     void ShowPopup(string msg, float dur = 3f)

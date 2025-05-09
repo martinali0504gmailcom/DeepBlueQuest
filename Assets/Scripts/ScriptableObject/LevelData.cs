@@ -15,7 +15,11 @@ public class LevelData : ScriptableObject
 
     [TextArea]
     public string initialText; //text shown at the start of the game
-    public float initialTextDismissTime = 7f;
+
+    [Header("Optional Multi-line intro")]
+    [TextArea] public string[] initialMessages; //if empty, fall back to initialText
+    public float initialTextDismissTime = 7f; //Time till text disappears/is removed
+
 
     [TextArea]
     public string failText; //text shown if player fails the level
