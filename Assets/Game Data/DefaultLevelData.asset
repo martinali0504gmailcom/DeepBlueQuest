@@ -12,54 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71af1e575cf05438fad1d91bc74d532e, type: 3}
   m_Name: DefaultLevelData
   m_EditorClassIdentifier: 
-  levelName: 
-  initialText: Look around and snip pieces of dead coral, then glue them to rocks!
-    Do this three times! Move with WASD or the Arrow Keys! Look with the mouse! Use
-    Space/Right Ctrl to go up and Shift to go down! Use Q or / to interact with the
-    objectives! Open your inventory of tools with E! You have enough oxygen to stay
-    underwater for 45 minutes! Good Luck!
   initialMessages:
-  - Hey Im a test!
-  - Oh look, it's working!
-  - Yippie!
-  initialTextDismissTime: 3
-  failText: "You had a great dive! Out of oxygen now, but learning takes time. Let\u2019s
-    go again when you\u2019re ready."
+  - Alright, let's get diving! (Use Interact to skip messages)
+  - You can move around with the arrow keys or WASD! Use your mouse to look around!
+  - 'To interact with something, get close, face it, and use the interact key (Q
+    or "/")! '
+  - You will need a tool to interact with your goals. Open the inventory with E and
+    select your tool with the mouse!
+  - You have enough oxygen for 40 minutes under the water. Don't take too long!
+  - Your mission is to find, cut, and replant 3 pieces of coral. Good luck!
+  initialTextDismissTime: 5
+  failMessages:
+  - Oh no! You're out of oxygen! Get out of there... we'll have to come back next
+    time!
   failTextDismissTime: 10
-  successText: You did it, level complete!
+  successMessages:
+  - Yippie! You did it! We'll get you out of there soon and head on back! Well done!
   successTextDismissTime: 10
-  clipperInfoText1: "Oh no! Some corals got sick from dirty water and too much heat.
-    Sneaky fungi and germs are hurting them! If we don\u2019t help, the sickness
-    could spread to their coral neighbors!"
-  clipperInfoText2: "Use the Coral Clippers to snip away the sick, mushy parts of
-    the coral. Be gentle\u2014only cut what looks fuzzy or brown. Toss the  pieces
-    in the special bin!"
-  clipperInfoTextDismissTime: 10
-  vaccumInfoText1: "Trash and dirty stuff from land floated into the ocean. Chemicals,
-    plastic, and oil can hurt coral, make fish sick, and turn our beautiful reef
-    into a mess. Coral need clean water to grow\u2014just like flowers need clean
-    soil!"
-  vaccumInfoText2: "Point the vacuum at the messy spots and suck up the gunk! Look
-    out for baby fish\u2014don\u2019t slurp them up by mistake!"
-  vaccumInfoTextDismissTime: 10
-  glueInfoText1: " The coral looks pale like a ghost! When ocean water gets too hot,
-    coral gets stressed and kicks out the tiny helpful algae that give them food
-    and color. That\u2019s called bleaching. Without their algae buddies, coral get
-    hungry and weak... and might not survive.\n\nBroken coral pieces are like little
-    plant cuttings\u2014they can grow again if we give them a good home! This helps
-    rebuild the reef and bring fishy friends back!"
-  glueInfoText2: "Pick a clean, sunny spot on the rock. Use the coral glue (it\u2019s
-    ocean-safe!) to stick the baby coral piece down. Hold it for 3...2...1...done!"
-  glueInfoTextDismissTime: 10
-  taskCompletionText1: Woo hoo, on to the next one!
-  taskCompletionText2: Hooray! The reef is smiling again thanks to you.
-  taskCompletionText3: Mission cleaned and cleared. The ocean critters say thank
-    you.
-  taskCompletionText4: "You did it. That coral\u2019s got its groove and color back."
-  taskCompletionText5: "Fish are moving back in\u2014reef life is coming alive."
-  taskCompletionText6: "Coral comeback in progress\u2014Captain Eco, you're amazing."
-  taskCompletionText7: "Pollution defeated. Coral protected. Hero, that\u2019s you."
-  taskCompletionText8: 
-  taskCompletionText9: 
-  taskCompletionText10: 
-  taskCompletionTextDismissTime: 5
+  clipperInfoLines1:
+  - Oh no! Some corals got sick from dirty water and too much heat. Sneaky fungi
+    and germs are hurting them!
+  - "If we don\u2019t help, the sickness could spread to their coral neighbors!"
+  clipperInfoLines2:
+  - Use the Coral Clippers to snip away the sick, mushy parts of the coral.
+  - We'll take the pieces somewhere else to glue, just grab it for now!
+  clipperInfoDismissTime: 8
+  vaccumInfoLines1: []
+  vaccumInfoLines2: []
+  vaccumInfoDismissTime: 8
+  glueInfoLines1:
+  - "The coral looks pale like a ghost! When ocean water gets too hot, coral gets
+    stressed and kicks out the tiny helpful algae that give them food and color.
+    That\u2019s called bleaching."
+  - "Broken coral pieces are like little plant cuttings\u2014they can grow again
+    if we give them a good home! This helps rebuild the reef and bring fishy friends
+    back!"
+  glueInfoLines2:
+  - "Pick a clean, sunny spot on the rock. Use the coral glue (it\u2019s ocean-safe!)
+    to stick the baby coral piece down."
+  glueInfoDismissTime: 8
+  taskCompletionMessages:
+  - Woo hoo, on to the next one!
+  - Hooray! The reef is smiling again thanks to you.
+  taskCompletionDismissTime: 5

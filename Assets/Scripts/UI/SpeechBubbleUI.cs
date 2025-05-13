@@ -21,6 +21,9 @@ public class SpeechBubbleUI : MonoBehaviour
 
     PlayerControls controls;
 
+    // Notes if the text is currently showing
+    public bool IsShowing => routine != null;
+
     void Awake()
     {
         Instance = this;

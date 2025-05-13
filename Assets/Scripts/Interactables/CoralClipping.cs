@@ -35,7 +35,8 @@ public class CoralClipping : InteractableBase
 
         // Give the player a coral sample
         inventory.GiveSample();
-        notificationSystem?.ShowMessage("Coral Snipped!", 2f);
+        SpeechBubbleUI.Instance.Show("You got a piece of coral, now go find a spot for it!", 2f);
+        // notificationSystem?.ShowMessage("Coral Snipped!", 2f);
 
         // tell LevelManager one coral finished
         LevelObjectiveTracker.Instance.NotifyCoralSnipped(this);

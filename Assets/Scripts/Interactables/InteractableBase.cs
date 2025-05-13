@@ -19,7 +19,7 @@ public class InteractableBase : MonoBehaviour
             Debug.Log("You do not have the proper tool equipped.");
             if (notificationSystem != null)
             {
-                notificationSystem.ShowMessage("Wrong tool equipped.");
+                SpeechBubbleUI.Instance.Show("You don't have the proper tool equipped!", 2f);
             }
             else
             {

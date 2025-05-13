@@ -29,6 +29,13 @@ public class PlayerInteract : MonoBehaviour
 
     void OnInteract()
     {
+        //Prevent interaction if the SpeechBubbleUI is showing
+        if (SpeechBubbleUI.Instance != null && SpeechBubbleUI.Instance.IsShowing)
+        {
+            Debug.Log("SpeechBubbleUI is showing, cannot interact.");
+            return;
+        }
+
         Debug.Log("Attempting to interact.");
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange))

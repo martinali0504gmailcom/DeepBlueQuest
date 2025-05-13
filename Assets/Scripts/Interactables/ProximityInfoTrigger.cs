@@ -1,11 +1,8 @@
+// ProximityInfoTrigger.cs – use per‑tool dismiss time
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 
-/// <summary>
-/// Shows the Clipper or Glue info pop-ups once per game session,
-/// no matter how many corals / rocks exist in the level.
-/// </summary>
 public class ProximityInfoTrigger : MonoBehaviour
 {
     public enum TriggerType { Clippers, Glue }
@@ -15,11 +12,9 @@ public class ProximityInfoTrigger : MonoBehaviour
     public LevelData levelData;
     public PlayerInventory playerInv;
 
-    // -------- static once-per-session flags --------
     static bool clipperInfoShown;
     static bool glueInfoShown;
 
-    // -------- instance --------
     bool localFired;
     PlayerControls controls;
 
@@ -31,16 +26,9 @@ public class ProximityInfoTrigger : MonoBehaviour
 
     void Update()
     {
-        if (localFired || playerInv == null || levelData == null) return;
-
-        // has this info already been shown anywhere?
-        if ((triggerType == TriggerType.Clippers  && clipperInfoShown) ||
-            (triggerType == TriggerType.Glue      && glueInfoShown))
-        {
-            localFired = true; // mark so we stop checking distance
-            return;
-        }
-
+        if (localFired || levelData == null || playerInv == null) return;
+        if ((triggerType == TriggerType.Clippers && clipperInfoShown) || (triggerType == TriggerType.Glue && glueInfoShown))
+        { localFired = true; return; }
         if (Vector3.Distance(playerInv.transform.position, transform.position) <= triggerRadius)
         {
             localFired = true;
@@ -50,29 +38,36 @@ public class ProximityInfoTrigger : MonoBehaviour
 
     IEnumerator RunSequence()
     {
-        ToolType tool   = (triggerType == TriggerType.Clippers)
-                          ? ToolType.CoralClippers
-                          : ToolType.CoralGlue;
+        ToolType tool = triggerType == TriggerType.Clippers ? ToolType.CoralClippers : ToolType.CoralGlue;
+        float dismiss = levelData.GetToolDismissTime(tool);
 
-        (string txt0, float dur0) = levelData.GetToolLines(tool, 0); // real-life
-        (string txt1, float dur1) = levelData.GetToolLines(tool, 1); // gameplay
+        string[] set1 = levelData.GetToolLines(tool, 0);
+        string[] set2 = levelData.GetToolLines(tool, 1);
 
-        SpeechBubbleUI.Instance.Show(txt0, dur0);
-
-        float t = 0f;
-        while (t < dur0)
+        foreach (var line in set1)
         {
-            t += Time.deltaTime;
-            if (controls.Player.Interact.WasPressedThisFrame()) break;
-            yield return null;
+            SpeechBubbleUI.Instance.Show(line, dismiss);
+            yield return WaitOrSkip(dismiss);
+        }
+        foreach (var line in set2)
+        {
+            SpeechBubbleUI.Instance.Show(line, dismiss);
+            yield return WaitOrSkip(dismiss);
         }
 
-        SpeechBubbleUI.Instance.Show(txt1, dur1);
-        yield return new WaitForSeconds(dur1);
+        if (triggerType == TriggerType.Clippers) clipperInfoShown = true; else glueInfoShown = true;
+    }
 
-        // record globally so no other trigger shows again
-        if (triggerType == TriggerType.Clippers) clipperInfoShown = true;
-        else                                     glueInfoShown    = true;
+    IEnumerator WaitOrSkip(float dur)
+    {
+        yield return new WaitUntil(() => !controls.Player.Interact.IsPressed());
+        float t = 0f;
+        while (t < dur)
+        {
+            t += Time.deltaTime;
+            if (controls.Player.Interact.WasPressedThisFrame()) yield break;
+            yield return null;
+        }
     }
 
     void OnDisable() => controls.Disable();

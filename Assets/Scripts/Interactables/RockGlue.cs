@@ -33,9 +33,9 @@ public class RockGlue : InteractableBase
         coralPlaced = true;
 
         // random completion line
-        string msg = levelData.GetRandomCompletionLine(ParseRange(completionRange));
+        string msg = levelData.GetRandomTaskCompletionMessage();
         if (!string.IsNullOrEmpty(msg))
-            SpeechBubbleUI.Instance.Show(msg, levelData.taskCompletionTextDismissTime);
+            SpeechBubbleUI.Instance.Show(msg, levelData.taskCompletionDismissTime);
 
         LevelObjectiveTracker.Instance.NotifyCoralGlued(this);
     }

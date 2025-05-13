@@ -3,6 +3,8 @@ using UnityEngine;
 public class LevelObjectiveTracker : MonoBehaviour
 {
     public static LevelObjectiveTracker Instance;
+    [Header("References")]
+    public NotificationUI notificationSystem;
 
     [Header("References")]
     public LevelManager levelManager;      // drag the LevelManager in scene
@@ -30,7 +32,20 @@ public class LevelObjectiveTracker : MonoBehaviour
     {
         if (snippedCount == corals.Length && gluedCount == rocks.Length)
         {
-            levelManager.OnLevelComplete();   // triggers success popup + save
+            levelManager.CompleteLevel();   // triggers success popup + save
+        }
+        else {
+            // show progress when planting coral (and only when planting coral)
+            if (snippedCount > 0 && snippedCount < corals.Length)
+            {
+                string msg = $"Coral planted: {snippedCount}/{corals.Length}";
+                notificationSystem.ShowMessage(msg, 2f);
+            }
+            else if (gluedCount > 0 && gluedCount < rocks.Length)
+            {
+                string msg = $"Coral glued: {gluedCount}/{rocks.Length}";
+                notificationSystem.ShowMessage(msg, 2f);
+            }
         }
     }
 }
