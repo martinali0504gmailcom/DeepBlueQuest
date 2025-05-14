@@ -13,29 +13,40 @@ MonoBehaviour:
   m_Name: DefaultLevelData
   m_EditorClassIdentifier: 
   initialMessages:
-  - Alright, let's get diving! (Use Interact to skip messages)
-  - You can move around with the arrow keys or WASD! Use your mouse to look around!
-  - 'To interact with something, get close, face it, and use the interact key (Q
-    or "/")! '
-  - You will need a tool to interact with your goals. Open the inventory with E and
-    select your tool with the mouse!
-  - You have enough oxygen for 40 minutes under the water. Don't take too long!
-  - Your mission is to find, cut, and replant 3 pieces of coral. Good luck!
-  initialTextDismissTime: 5
+  - "Are you ready to dive into a peaceful adventure?\nLet\u2019s begin! (Press \"Interact\"
+    to move forward.)"
+  - "Use the arrow keys or WASD to move your body. You can look around with the mouse.
+    Swim slowly, there\u2019s a lot to see!"
+  - If you want to touch or look at something special, move close, face it, and press
+    the Interact key (Q or "/").
+  - "You might need a tool to help the coral. Press E to open your bag and choose
+    a tool with your mouse. You\u2019ve got this!"
+  - "You have enough oxygen to stay safe and relaxed for 40 minutes in the water.
+    If you need to take a break, that\u2019s okay too."
+  - 'Your Mission: Help the ocean by planting 3 baby coral pieces and gently cleaning
+    harmful bacteria nearby.'
+  - "Take your time and explore\u2014every small step helps the sea become healthier
+    and happier!"
+  initialTextDismissTime: 9
   failMessages:
-  - Oh no! You're out of oxygen! Get out of there... we'll have to come back next
-    time!
+  - "You're out of oxygen!  It\u2019s okay!\nSometimes we don\u2019t finish everything
+    in one try. Take a deep breath. You can always try again."
   failTextDismissTime: 10
   successMessages:
-  - Yippie! You did it! We'll get you out of there soon and head on back! Well done!
+  - "Great work! You helped the ocean today by planting coral and keeping the waters
+    clean.\nEvery action you took made a difference\u2014keep exploring when you\u2019re
+    ready."
   successTextDismissTime: 10
   clipperInfoLines1:
-  - Oh no! Some corals got sick from dirty water and too much heat. Sneaky fungi
-    and germs are hurting them!
-  - "If we don\u2019t help, the sickness could spread to their coral neighbors!"
+  - Some corals are struggling because of pollution and heat. Harmful fungi have
+    started growing nearby, making it hard for new coral to survive.
+  - " If we don\u2019t clear them out, these fungi can spread and affect healthy
+    coral too. Let\u2019s take care of it before that happens."
   clipperInfoLines2:
-  - Use the Coral Clippers to snip away the sick, mushy parts of the coral.
-  - We'll take the pieces somewhere else to glue, just grab it for now!
+  - " Use the Coral Clippers to remove the infected areas around the coral. You're
+    not cutting the coral itself\u2014just cleaning the harmful fungi."
+  - We'll safely collect and dispose of what you clean. Focus on removing anything
+    that looks soft, dark, or out of place.
   clipperInfoDismissTime: 8
   vaccumInfoLines1: []
   vaccumInfoLines2: []

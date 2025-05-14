@@ -10,6 +10,7 @@ public class LevelObjectiveTracker : MonoBehaviour
     public LevelManager levelManager;      // drag the LevelManager in scene
     public CoralClipping[] corals;         // fill via inspector (or FindObjectsOfType)
     public RockGlue[]     rocks;           // same length & order as corals
+    public float timeToDisplayNotif = 2f;
 
     private int snippedCount = 0;
     private int gluedCount   = 0;
@@ -35,17 +36,24 @@ public class LevelObjectiveTracker : MonoBehaviour
             levelManager.CompleteLevel();   // triggers success popup + save
         }
         else {
-            // show progress when planting coral (and only when planting coral)
-            if (snippedCount > 0 && snippedCount < corals.Length)
-            {
-                string msg = $"Coral planted: {snippedCount}/{corals.Length}";
-                notificationSystem.ShowMessage(msg, 2f);
-            }
-            else if (gluedCount > 0 && gluedCount < rocks.Length)
-            {
-                string msg = $"Coral glued: {gluedCount}/{rocks.Length}";
-                notificationSystem.ShowMessage(msg, 2f);
-            }
+            // // show progress when planting coral (and only when planting coral)
+            // if (snippedCount > 0 && snippedCount < corals.Length)
+            // {
+            //    string msg = $"Coral planted: {snippedCount}/{corals.Length}";
+            //    notificationSystem.ShowMessage(msg, 2f);
+            //}
+            //else if (gluedCount > 0 && gluedCount < rocks.Length)
+            //{
+            //    string msg = $"Coral glued: {gluedCount}/{rocks.Length}";
+            //    notificationSystem.ShowMessage(msg, 2f);
+            //}
+            MessagePlayer();
         }
+    }
+
+    void MessagePlayer()
+    {
+        string msg = $"Coral Planted: {gluedCount}/{rocks.Length}";
+        notificationSystem.ShowMessage(msg, timeToDisplayNotif);
     }
 }
