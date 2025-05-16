@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 8517327831483637295}
   - component: {fileID: 583740048778224922}
   - component: {fileID: 2541353351663669513}
-  - component: {fileID: 6347186659509838350}
+  - component: {fileID: 1792723661498952734}
   - component: {fileID: 7058187782004133275}
   - component: {fileID: 8850186413477021650}
   m_Layer: 0
@@ -94,7 +94,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.75, z: 1.75}
+  m_LocalScale: {x: 3.45, y: 2, z: 1.33}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4623904732800203709}
@@ -131,7 +131,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e2fe178739a5b42b0b04241259a2b836, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,8 +153,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6347186659509838350
-CapsuleCollider:
+--- !u!64 &1792723661498952734
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -171,11 +171,10 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &7058187782004133275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,12 +191,10 @@ MonoBehaviour:
   requiredTool: 2
   requiresHold: 0
   timeToHold: 0
-  spawnPoint: {fileID: 4623904732800203709}
   babyCoralPrefab: {fileID: 4901050869903868745, guid: 9d4b652575a0ca648a2227c88a9cadee, type: 3}
+  spawnPoint: {fileID: 4623904732800203709}
   levelData: {fileID: 11400000, guid: cca7e2dcc5b3d4ea29e0bd619209f0f7, type: 2}
-  gluePortrait: {fileID: 0}
   completionRange: 1-2
-  coralPlaced: 0
 --- !u!114 &8850186413477021650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,5 +210,4 @@ MonoBehaviour:
   triggerType: 1
   triggerRadius: 5
   levelData: {fileID: 11400000, guid: cca7e2dcc5b3d4ea29e0bd619209f0f7, type: 2}
-  portraitIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   playerInv: {fileID: 0}

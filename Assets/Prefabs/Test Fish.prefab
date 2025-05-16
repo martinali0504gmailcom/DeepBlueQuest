@@ -63,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 150, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8701483694861804880}
@@ -157,11 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3eae55932a044bd7adcc780f4dc1533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimSpeed: 3
+  swimSpeed: 3.75
   waypointThreshold: 1.5
-  obstacleCheckDistance: 2.5
-  avoidanceTurnSpeed: 2
-  fleeDistance: 4.5
+  randomWaypoints: 1
+  obstacleCheckDistance: 1.5
+  avoidanceTurnSpeed: 4
+  fleeDistance: 3.75
   fleeSpeedMultiplier: 2
   fleeDuration: 3
   playerTransform: {fileID: 0}

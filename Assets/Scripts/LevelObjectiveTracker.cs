@@ -31,7 +31,7 @@ public class LevelObjectiveTracker : MonoBehaviour
 
     void CheckWin()
     {
-        if (snippedCount == corals.Length && gluedCount == rocks.Length)
+        if (gluedCount == rocks.Length) //Only care about making sure every rock than can be glued, is.
         {
             levelManager.CompleteLevel();   // triggers success popup + save
         }
