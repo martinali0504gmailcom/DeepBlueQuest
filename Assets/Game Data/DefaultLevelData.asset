@@ -66,3 +66,11 @@ MonoBehaviour:
   - Woo hoo, on to the next one!
   - Hooray! The reef is smiling again thanks to you.
   taskCompletionDismissTime: 5
+  infoBlurbs:
+  - lines:
+    - Hey, fun fact!
+    - I'm two separate boxes!
+  - lines:
+    - Oooh, you did it again!
+    - Yippieee!
+  infoBlurbDismissTime: 3

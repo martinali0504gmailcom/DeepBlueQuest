@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8763649223885204348}
   - component: {fileID: 995703168419508562}
   - component: {fileID: 4274487917234610291}
+  - component: {fileID: 1021629794752001989}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -56,13 +57,9 @@ MonoBehaviour:
   start: {fileID: 0}
   goal: {fileID: 0}
   playerMovementScript: {fileID: 0}
-  popupPanel: {fileID: 0}
-  popupText: {fileID: 0}
   oxygenTime: 2700
-  levelFailed: 0
-  levelComplete: 0
   goalRadius: 2
-  menuReturnDelay: 4
+  returnDelay: 4
 --- !u!114 &5033659288777365206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,9 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff51f61bab622b48b5a77059a0491b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationSystem: {fileID: 0}
   levelManager: {fileID: 2112423649061030114}
   corals: []
   rocks: []
+  timeToDisplayNotif: 2
 --- !u!114 &1152766798565257026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +174,16 @@ MonoBehaviour:
   extraDensityPerMeter: 0.0003
   farClip: 600
   playerMovementScript: {fileID: 0}
+  playerTransform: {fileID: 0}
+--- !u!114 &1021629794752001989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908945662198070046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e8753520486074195886bbc07f0798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

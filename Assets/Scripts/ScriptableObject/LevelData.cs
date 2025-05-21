@@ -2,6 +2,12 @@
 using UnityEngine;
 
 [System.Serializable]
+public class MultiLineBlurb
+{
+    [TextArea] public string[] lines;   // each element is one speech‑bubble in order
+}
+
+[System.Serializable]
 public class RangeString { public string range = "1-10"; }
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "DeepBlueQuest/Level Data", order = 1)]
@@ -33,6 +39,12 @@ public class LevelData : ScriptableObject
     [Header("Task Completion Pool (random)")]
     [TextArea] public string[] taskCompletionMessages;
     public float taskCompletionDismissTime = 5f;
+
+    // ---------- INFO BLURBS that appear after each glue ----------
+    [Header("Ordered Info Blurbs (each element can be multi‑line)")]
+    public MultiLineBlurb[] infoBlurbs;        // element #N will be shown after glue #N
+    public float infoBlurbDismissTime = 6f;
+
 
     // ---------- HELPERS ----------
     public string[] GetInitialLines()  => initialMessages;

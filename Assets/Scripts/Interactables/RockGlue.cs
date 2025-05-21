@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class RockGlue : InteractableBase
@@ -11,7 +12,11 @@ public class RockGlue : InteractableBase
     [Header("Completion range (e.g. 1-10 or 2,4,6-8)")]
     public string completionRange = "1-10";
 
+    static int blurbGroupIndex = 0; //next blurb group to show
+
     bool coralPlaced;
+
+    //get player controls
 
     public override void Interact(PlayerInventory inv)
     {
@@ -32,13 +37,50 @@ public class RockGlue : InteractableBase
         Instantiate(babyCoralPrefab, spawnPoint.position, spawnPoint.rotation, transform);
         coralPlaced = true;
 
-        // random completion line
-        string msg = levelData.GetRandomTaskCompletionMessage();
-        if (!string.IsNullOrEmpty(msg))
-            SpeechBubbleUI.Instance.Show(msg, levelData.taskCompletionDismissTime);
+        StartCoroutine(InfoThenCongrats());
+    }
+    IEnumerator InfoThenCongrats()
+    {
+        // 1) ------------- ordered blurb set -------------
+        if (levelData.infoBlurbs != null &&
+            blurbGroupIndex < levelData.infoBlurbs.Length)
+        {
+            var group = levelData.infoBlurbs[blurbGroupIndex++];
+            foreach (string line in group.lines)
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
 
+                SpeechBubbleUI.Instance.Show(line, levelData.infoBlurbDismissTime);
+                yield return WaitForBubbleOrSkip(levelData.infoBlurbDismissTime);
+            }
+            yield return new WaitForSeconds(0.15f); // small gap
+        }
+
+        // 2) ------------- random completion cheer -------------
+        string cheer = levelData.GetRandomTaskCompletionMessage();
+        if (!string.IsNullOrEmpty(cheer))
+            SpeechBubbleUI.Instance.Show(cheer, levelData.taskCompletionDismissTime);
+
+        // 3) ------------- notify objective tracker -------------
         LevelObjectiveTracker.Instance.NotifyCoralGlued(this);
     }
+
+IEnumerator WaitForBubbleOrSkip(float dur)
+{
+    var c = InputManager.Controls;              // shared instance
+
+    // require button to be released first so a held press doesn't skip twice
+    yield return new WaitUntil(() => !c.Player.Interact.IsPressed());
+
+    float t = 0f;
+    while (t < dur && SpeechBubbleUI.Instance.IsShowing)
+    {
+        t += Time.deltaTime;
+        if (c.Player.Interact.WasPressedThisFrame()) break;
+        yield return null;
+    }
+}
+
 
     // helper
     List<int> ParseRange(string s)
