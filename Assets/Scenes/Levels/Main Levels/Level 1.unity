@@ -6749,6 +6749,22 @@ PrefabInstance:
       propertyPath: notificationSystem
       value: 
       objectReference: {fileID: 1484501635}
+    - target: {fileID: 3959908980826997125, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959908980826997125, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.93477184
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959908980826997125, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.8632076
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959908980826997125, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294962908
+      objectReference: {fileID: 0}
     - target: {fileID: 4124071707231988597, guid: 3906275601cf84925893f61547ee8a82, type: 3}
       propertyPath: m_Name
       value: Bubble Text
@@ -6764,6 +6780,22 @@ PrefabInstance:
     - target: {fileID: 4277133138062756964, guid: 3906275601cf84925893f61547ee8a82, type: 3}
       propertyPath: m_fontSizeBase
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679505415410282617, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679505415410282617, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679505415410282617, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 407
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679505415410282617, guid: 3906275601cf84925893f61547ee8a82, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 178
       objectReference: {fileID: 0}
     - target: {fileID: 4704792650896745015, guid: 3906275601cf84925893f61547ee8a82, type: 3}
       propertyPath: playerMovementScript
@@ -6884,7 +6916,7 @@ PrefabInstance:
     - target: {fileID: 7920574806945572142, guid: 3906275601cf84925893f61547ee8a82, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1323586929, guid: 04b4cd516d1af44108b936d5dfe5de96, type: 3}
+      objectReference: {fileID: -1934717658, guid: 2ef6f7e1a930a42bba418ddbc5507600, type: 3}
     - target: {fileID: 8220337499791322566, guid: 3906275601cf84925893f61547ee8a82, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
