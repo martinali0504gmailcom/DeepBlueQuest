@@ -9,6 +9,8 @@ public class PlayerInventory : MonoBehaviour
     [Header("Cargo")]
     public int coralSamples = 0;
 
+    public int SampleCount => coralSamples;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

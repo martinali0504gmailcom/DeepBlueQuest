@@ -6165,15 +6165,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.62
+      value: 87.6
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.74
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.877257
+      value: 17.1
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6207,17 +6207,21 @@ PrefabInstance:
       propertyPath: notificationSystem
       value: 
       objectReference: {fileID: 1484501635}
+    - target: {fileID: 7289420733942307171, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1886150771}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8850186413477021650, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: playerInv
@@ -17924,7 +17928,7 @@ Transform:
   m_GameObject: {fileID: 952413676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98, y: 0, z: 18.2}
+  m_LocalPosition: {x: 38.2, y: 0.3, z: 58.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30898,15 +30902,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -28.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6654543467043830616, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30940,17 +30944,21 @@ PrefabInstance:
       propertyPath: notificationSystem
       value: 
       objectReference: {fileID: 1484501635}
+    - target: {fileID: 7289420733942307171, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1886150771}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -69.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8850186413477021650, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: playerInv
@@ -37626,6 +37634,10 @@ PrefabInstance:
       propertyPath: notificationSystem
       value: 
       objectReference: {fileID: 1484501635}
+    - target: {fileID: 7289420733942307171, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
+      propertyPath: playerInventory
+      value: 
+      objectReference: {fileID: 1886150771}
     - target: {fileID: 8517327831483637295, guid: 662c417d7541d4b868911bd4409145b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

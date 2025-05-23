@@ -16,6 +16,8 @@ public class RockGlue : InteractableBase
 
     bool coralPlaced;
 
+    public bool HasCoralPlaced => coralPlaced;
+
     //get player controls
 
     public override void Interact(PlayerInventory inv)
