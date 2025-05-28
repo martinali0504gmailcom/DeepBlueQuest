@@ -141,9 +141,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerType: 0
-  triggerRadius: 5
+  triggerRadius: 6.5
   levelData: {fileID: 11400000, guid: cca7e2dcc5b3d4ea29e0bd619209f0f7, type: 2}
-  portraitIcon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   playerInv: {fileID: 0}
 --- !u!1 &6679687796869227902
 GameObject:
